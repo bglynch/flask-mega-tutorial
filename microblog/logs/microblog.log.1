@@ -1,4 +1,4 @@
-2018-08-18 19:23:01,832 ERROR: Exception on /index [GET] [in /home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py:1761]
+2018-08-19 17:24:21,906 ERROR: Exception on /user/brian [GET] [in /home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,8 +14,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/ubuntu/workspace/microblog/app/routes.py", line 30, in index
-    return render_template('index.html', title='Home',  form=form, posts=posts)
+  File "/home/ubuntu/workspace/microblog/app/routes.py", line 81, in user
+    return render_template('user.html', user=user, posts=posts, next_url=next_url, prev_url=prev_url)
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/templating.py", line 117, in _render
@@ -26,16 +26,25 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/ubuntu/workspace/microblog/app/templates/index.html", line 1, in top-level template code
+  File "/home/ubuntu/workspace/microblog/app/templates/user.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/home/ubuntu/workspace/microblog/app/templates/base.html", line 30, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/ubuntu/workspace/microblog/app/templates/index.html", line 6, in block "content"
-    {{ form.hidden_tag() }}
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2018-08-18 19:23:11,890 ERROR: Exception on /index [GET] [in /home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py:1761]
+  File "/home/ubuntu/workspace/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/ubuntu/workspace/microblog/app/templates/base.html", line 48, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/home/ubuntu/workspace/microblog/app/templates/user.html", line 22, in block "app_content"
+    {% for post in posts %}
+TypeError: 'Pagination' object is not iterable
+2018-08-19 17:28:30,924 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:45]
+2018-08-19 17:28:38,672 ERROR: Exception on /user/brian [GET] [in /home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -51,8 +60,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/ubuntu/workspace/microblog/app/routes.py", line 30, in index
-    return render_template('index.html', title='Home',  form=form, posts=posts)
+  File "/home/ubuntu/workspace/microblog/app/routes.py", line 81, in user
+    return render_template('user.html', user=user, posts=posts, next_url=next_url, prev_url=prev_url)
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/templating.py", line 117, in _render
@@ -63,65 +72,18 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/ubuntu/workspace/microblog/app/templates/index.html", line 1, in top-level template code
+  File "/home/ubuntu/workspace/microblog/app/templates/user.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/home/ubuntu/workspace/microblog/app/templates/base.html", line 30, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/ubuntu/workspace/microblog/app/templates/index.html", line 6, in block "content"
-    {{ form.hidden_tag() }}
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2018-08-18 19:23:19,335 ERROR: Exception on /index [GET] [in /home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/ubuntu/workspace/microblog/app/routes.py", line 30, in index
-    return render_template('index.html', title='Home',  form=form, posts=posts)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/ubuntu/workspace/microblog/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/ubuntu/workspace/microblog/app/templates/base.html", line 30, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/ubuntu/workspace/microblog/app/templates/index.html", line 6, in block "content"
-    {{ form.hidden_tag() }}
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2018-08-18 19:23:28,695 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-18 19:38:14,585 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-18 19:45:59,089 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-18 20:01:31,351 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-18 20:09:10,845 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-19 09:48:15,013 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-19 09:57:42,973 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-19 10:06:08,152 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-19 10:10:51,536 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-19 10:12:22,915 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-19 10:27:30,567 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-19 10:41:11,839 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-19 10:48:05,751 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-19 10:49:30,929 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:43]
-2018-08-19 10:55:46,050 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:43]
-2018-08-19 12:47:24,058 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:43]
+  File "/home/ubuntu/workspace/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/ubuntu/workspace/microblog/app/templates/user.html", line 23, in block "content"
+    {% for post in posts %}
+TypeError: 'Pagination' object is not iterable

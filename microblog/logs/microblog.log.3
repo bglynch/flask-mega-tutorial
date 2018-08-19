@@ -1,13 +1,24 @@
-2018-08-17 15:41:28,054 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-17 15:41:42,196 ERROR: Exception on /edit_profile [POST] [in /home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py:1761]
+2018-08-19 12:48:30,547 ERROR: Exception on /reset_password_request [POST] [in /home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_mail.py", line 427, in send
+    connection.send(self)
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_mail.py", line 192, in send
+    message.rcpt_options)
+  File "/usr/lib/python3.4/smtplib.py", line 766, in sendmail
+    self.ehlo_or_helo_if_needed()
+  File "/usr/lib/python3.4/smtplib.py", line 569, in ehlo_or_helo_if_needed
+    if not (200 <= self.ehlo()[0] <= 299):
+  File "/usr/lib/python3.4/smtplib.py", line 423, in ehlo
+    self.putcmd(self.ehlo_msg, name or self.local_hostname)
+  File "/usr/lib/python3.4/smtplib.py", line 349, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.4/smtplib.py", line 341, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
 
-The above exception was the direct cause of the following exception:
+During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 2292, in wsgi_app
@@ -22,62 +33,48 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/ubuntu/workspace/microblog/app/routes.py", line 85, in edit_profile
-    db.session.commit()
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/scoping.py", line 153, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/session.py", line 943, in commit
-    self.transaction.commit()
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/session.py", line 467, in commit
-    self._prepare_impl()
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
-    self.session.flush()
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
-    self._flush(objects)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 249, in reraise
-    raise value
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
-    flush_context.execute()
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
-    rec.execute(self)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
-    uow
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/persistence.py", line 177, in save_obj
-    mapper, table, update)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/orm/persistence.py", line 768, in _emit_update_statements
-    execute(statement, multiparams)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
-    raise value.with_traceback(tb)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username [SQL: 'UPDATE user SET username=?, about_me=? WHERE user.id = ?'] [parameters: ('susan', "Hello I'm Briam", 2)] (Background on this error at: http://sqlalche.me/e/gkpj)
-2018-08-18 15:12:08,351 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-18 17:29:54,430 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-18 17:30:02,020 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-18 18:36:15,145 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-18 18:46:43,661 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-18 19:22:11,011 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
-2018-08-18 19:22:13,679 ERROR: Exception on / [GET] [in /home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py:1761]
+  File "/home/ubuntu/workspace/microblog/app/routes.py", line 156, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/ubuntu/workspace/microblog/app/email.py", line 19, in send_password_reset_email
+    user=user, token=token))
+  File "/home/ubuntu/workspace/microblog/app/email.py", line 9, in send_email
+    mail.send(msg)
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_mail.py", line 152, in __exit__
+    self.host.quit()
+  File "/usr/lib/python3.4/smtplib.py", line 872, in quit
+    res = self.docmd("quit")
+  File "/usr/lib/python3.4/smtplib.py", line 403, in docmd
+    self.putcmd(cmd, args)
+  File "/usr/lib/python3.4/smtplib.py", line 349, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.4/smtplib.py", line 341, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+2018-08-19 12:52:06,687 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:43]
+2018-08-19 12:52:17,906 ERROR: Exception on /reset_password_request [POST] [in /home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_mail.py", line 427, in send
+    connection.send(self)
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_mail.py", line 192, in send
+    message.rcpt_options)
+  File "/usr/lib/python3.4/smtplib.py", line 766, in sendmail
+    self.ehlo_or_helo_if_needed()
+  File "/usr/lib/python3.4/smtplib.py", line 569, in ehlo_or_helo_if_needed
+    if not (200 <= self.ehlo()[0] <= 299):
+  File "/usr/lib/python3.4/smtplib.py", line 423, in ehlo
+    self.putcmd(self.ehlo_msg, name or self.local_hostname)
+  File "/usr/lib/python3.4/smtplib.py", line 349, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.4/smtplib.py", line 341, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -91,26 +88,25 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/ubuntu/workspace/microblog/app/routes.py", line 30, in index
-    return render_template('index.html', title='Home', posts=posts)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/ubuntu/workspace/microblog/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/ubuntu/workspace/microblog/app/templates/base.html", line 30, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/ubuntu/workspace/microblog/app/templates/index.html", line 6, in block "content"
-    {{ form.hidden_tag() }}
-  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
+  File "/home/ubuntu/workspace/microblog/app/routes.py", line 156, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/ubuntu/workspace/microblog/app/email.py", line 19, in send_password_reset_email
+    user=user, token=token))
+  File "/home/ubuntu/workspace/microblog/app/email.py", line 9, in send_email
+    mail.send(msg)
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/home/ubuntu/workspace/microblog/venv/lib/python3.4/site-packages/flask_mail.py", line 152, in __exit__
+    self.host.quit()
+  File "/usr/lib/python3.4/smtplib.py", line 872, in quit
+    res = self.docmd("quit")
+  File "/usr/lib/python3.4/smtplib.py", line 403, in docmd
+    self.putcmd(cmd, args)
+  File "/usr/lib/python3.4/smtplib.py", line 349, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.4/smtplib.py", line 341, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+2018-08-19 12:52:56,553 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:43]
+2018-08-19 13:49:44,770 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:45]
+2018-08-19 17:10:50,275 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:45]
