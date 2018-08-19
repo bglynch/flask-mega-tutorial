@@ -115,3 +115,8 @@ jinja2.exceptions.UndefinedError: 'form' is undefined
 2018-08-18 20:01:31,351 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
 2018-08-18 20:09:10,845 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
 2018-08-19 09:48:15,013 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
+2018-08-19 09:57:42,973 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
+2018-08-19 10:06:08,152 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
+2018-08-19 10:10:51,536 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
+2018-08-19 10:12:22,915 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
+2018-08-19 10:27:30,567 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:41]
