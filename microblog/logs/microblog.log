@@ -89,3 +89,4 @@ Traceback (most recent call last):
 TypeError: 'Pagination' object is not iterable
 2018-08-19 17:37:41,792 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:45]
 2018-08-19 17:39:20,285 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:45]
+2018-08-19 18:11:58,497 INFO: Microblog startup [in /home/ubuntu/workspace/microblog/app/__init__.py:47]
